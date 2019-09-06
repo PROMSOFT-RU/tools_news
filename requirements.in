@@ -1,0 +1,7 @@
+requests
+pymongo
+pyyaml
+envparse
+mattermostdriver
+sentry_sdk
+python-logstash

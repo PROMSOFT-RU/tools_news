@@ -1,0 +1,37 @@
+# -*- coding: utf-8
+
+logging:
+  version: 1
+  formatters:
+    simple:
+      format: '%(asctime)s %(levelname) -10s %(name) -10s %(funcName) -15s %(lineno) 5d: %(message)s'
+  handlers:
+    console:
+      class: logging.StreamHandler
+      level: ERROR
+      formatter: simple
+      stream: ext://sys.stdout
+    file: &file_args
+      class : logging.handlers.WatchedFileHandler
+      level: INFO
+      encoding: utf-8
+      formatter: simple
+      filename: logs/tools_news.log
+    error:
+      <<: *file_args
+      level: ERROR
+      filename: logs/tools_news-error.log
+    logstash:
+      class: logstash.LogstashHandler
+      level: INFO
+      host: $LOGSTASH_HOST$
+      port: $LOGSTASH_PORT$
+      version: 1
+      message_type: logstash
+      tags: [tools_news]
+  loggers:
+    tools_news:
+      level: DEBUG
+  root:
+    level: DEBUG
+    handlers: [console, error, file, logstash]

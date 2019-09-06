@@ -1,0 +1,15 @@
+your_mattermost_username:
+  dockerhub:
+    - mongo
+    - gitlab/gitlab-runner
+    - sentry
+    - gitlab/gitlab-ce
+    - yandex/clickhouse-server
+    - ejabberd/ecs
+    - rabbitmq
+  github:
+    - catboost/catboost
+    - mattermost/desktop
+    - mongodb/mongo-python-driver
+    - Atlinity/clicktail
+
